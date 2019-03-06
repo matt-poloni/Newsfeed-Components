@@ -4,10 +4,14 @@ class Article {
   constructor(domElement) {
     // assign this.domElement to the passed in domElement
     this.domElement = domElement;
+    // STRETCH 3: Button to remove article marked as read
+    this.readButton = this.domElement.querySelector('.readButton');
     // create a reference to the ".expandButton" class. 
     this.expandButton = this.domElement.querySelector('.expandButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = 'Click to Expand';
+    // STRETCH 3: Click handler to remove article marked as read
+    this.readButton.addEventListener('click', this.readArticle.bind(this));
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', this.expandArticle.bind(this));
   }
@@ -20,6 +24,10 @@ class Article {
     } else {
       this.expandButton.textContent = 'Click to Expand';
     }
+  }
+  readArticle() {
+    // STRETCH 3: remove article marked as read
+    this.domElement.classList.toggle('article-read');
   }
 }
 
