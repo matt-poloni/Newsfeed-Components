@@ -41,3 +41,37 @@ class Article {
 
 let articles = document.querySelectorAll('.article');
 articles.forEach(function(article) { return new Article(article); });
+
+
+// STRETCH 4: Article constructor
+const artWrapper = document.querySelector('.articles');
+const addArticle = function(header, date, content) {
+  let newArticle = document.createElement('div');
+  newArticle.classList.add('article');
+
+  const artH2 = document.createElement('h2');
+  artH2.textContent = header;
+  newArticle.append(artH2);
+
+  const artRead = document.createElement('span');
+  artRead.classList.add('readButton');
+  artRead.textContent = 'Mark as Read';
+  newArticle.append(artRead);
+
+  const artDate = document.createElement('p');
+  artDate.classList.add('date');
+  artDate.textContent = date;
+  newArticle.append(artDate);
+
+  const artContent = document.createElement('p');
+  artContent.textContent = content;
+  newArticle.append(artContent);
+
+  const artExpand = document.createElement('span');
+  artExpand.classList.add('expandButton');
+  newArticle.append(artExpand);
+
+  artWrapper.append(newArticle);
+  articles = document.querySelectorAll('.article');
+  return new Article(newArticle);
+}
